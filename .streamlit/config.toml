@@ -1,1 +1,2 @@
-enableCORS=False
+[server]
+enableCORS = false
