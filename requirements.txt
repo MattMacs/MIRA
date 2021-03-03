@@ -1,0 +1,5 @@
+streamlit
+pandas
+tika
+lxml
+html5lib
