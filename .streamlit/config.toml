@@ -1,2 +1,3 @@
 [server]
 enableCORS = false
+serverAddress = "https://share.streamlit.io"  
