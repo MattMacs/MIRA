@@ -69,23 +69,18 @@ def show_request(infile, col1, col2):
 def main():
      st.sidebar.text('Work in progress')
 
-     selection = st.sidebar.selectbox('Options', ['Upload new request', 'Explore data'])
+     selection = st.sidebar.selectbox('Options', ['Upload new request'])
 
      if selection == 'Upload new request':
           uploaded_file = st.file_uploader('Upload file')
           if uploaded_file is not None:
                # save file
                col1, col2 = st.beta_columns(2)
-               with open(f'd:/{uploaded_file.name}', 'wb') as f:
-                    f.write(uploaded_file.getvalue())
+               #with open(f'd:/{uploaded_file.name}', 'wb') as f:
+               #     f.write(uploaded_file.getvalue())
                bytes_data = uploaded_file.getvalue()
                parsed = parser.from_buffer(bytes_data, xmlContent=True)
                show_request(parsed['content'], col1, col2)
-     elif selection == 'Explore data':
-          files = glob.glob('d:/RAAPIT/_data/reqhtml/*.doc*.html')
-          selected = st.selectbox('Select Request', files)        
-          col1, col2 = st.beta_columns(2)
-          show_request(selected, col1, col2)
      else:
           st.error('This shouldn\'t have happened')
 
